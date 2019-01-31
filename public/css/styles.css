@@ -1,0 +1,78 @@
+.is-upper-roman {
+  margin-top: 0 !important;
+}
+
+.hero.is-white {
+  background-color: #e9e6df;
+}
+
+.has-background-sand.card {
+  background-color: #e9e6df;
+}
+
+.divider-sand {
+  background-color: #d5cfc8;
+  /* e1dcd8 */
+}
+
+.is-inred.is-dark {
+  background-color: #99392a;
+}
+.is-dark-sand.navbar.is-transparent {
+  background-color: #917b6d;
+}
+a.has-text-light:focus,
+a.has-text-light:hover {
+  background-color: #917b6d !important;
+}
+
+.serverInfoFill {
+  padding-top: 48px;
+  padding-bottom: 48px;
+}
+
+.serverStatusFill {
+  padding-top: 12px;
+  padding-bottom: 12px;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  visibility: hidden;
+  width: 140px;
+  background-color: #555;
+  color: #fff;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px;
+  position: absolute;
+  z-index: 1;
+  bottom: 150%;
+  left: 50%;
+  margin-left: -75px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.tooltip .tooltiptext::after {
+  content: "";
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  margin-left: -5px;
+  border-width: 5px;
+  border-style: solid;
+  border-color: #555 transparent transparent transparent;
+}
+
+.fillfPostTop {
+  padding-top: 20px;
+}
+
+.fillfPostBottom {
+  padding-bottom: 60px;
+}

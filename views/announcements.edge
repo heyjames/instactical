@@ -1,0 +1,87 @@
+@layout('layouts.app')
+ 
+@section('content')
+
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        Announcements
+      </h1>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-white">
+  <div class="hero-body">
+    <div class="container">
+
+      <div class="columns">
+        <div class="column is-6 is-offset-3">
+          @each(announcement in announcements)
+            <div class="has-background-sand card is-shadowless">
+              <div class="card-content is-paddingless">
+                <span class="content is-size-6 subtitle">
+                  {{ announcement.content }}
+                </span>
+                <br>
+                <span class="subtitle is-size-6 has-text-grey">
+                  <span 
+                    title="{{ announcement.createdAt.toDateString() }}">
+                    {{ moment(announcement.createdAt).fromNow() }}
+                  </span> by {{ announcement.username }}
+                </span>
+              </div>
+            </div>
+            <hr class="divider-sand">
+          @endeach
+        </div>
+      </div>
+
+      @if(paginate.totalPages > 1)
+        <div class="columns">
+          <div class="column is-4 is-offset-4">
+            <nav class="pagination" role="navigation" aria-label="pagination">
+              @if(paginate.page === 1)
+                <a class="pagination-previous" disabled>Previous</a>
+              @else
+                <a class="pagination-previous" 
+                  href="/announcements?page={{ paginate.prevPage }}">
+                  Previous
+                </a>
+              @endif
+
+              @if(paginate.totalPages === paginate.page)
+                <a class="pagination-next" disabled>Next page</a>
+              @else
+                <a class="pagination-next" 
+                  href="/announcements?page={{ paginate.nextPage }}">
+                  Next page
+                </a>
+              @endif
+
+              <ul class="pagination-list">
+                @each(post in range(paginate.totalPages))
+                  <li>
+                    <a class="pagination-link
+                      @if(paginate.page === ($loop.index + 1))
+                        is-current has-text-white
+                      @endif
+
+                      " href="/announcements?page={{ ($loop.index + 1) }}" 
+                      aria-label="Goto page {{ ($loop.index + 1) }}">
+                      {{ ($loop.index + 1) }}
+                    </a>
+                  </li>
+                @endeach
+              </ul>
+            </nav>
+          </div>
+        </div>
+      @endif
+
+    </div>
+  </div>
+</section>
+
+@endsection

@@ -1,0 +1,57 @@
+@layout('layouts.app')
+ 
+@section('content')
+
+<section class="hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        {{ post.title }}
+      </h1>
+      <p class="subtitle is-6">
+        Posted 
+        <span title="{{ post.createdAt.toDateString() }}">
+          {{ moment(post.createdAt).fromNow() }}
+        </span>
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-6 is-offset-3">
+        <div class="tile is-ancestor is-offset-2">
+
+          <div class="tile is-12 is-parent is-shadowless">
+            <div class="tile is-child is-radiusless">
+              <div class="card is-shadowless">
+                <div class="card-image">
+                  <figure class="image is-16by9">
+                    @if(post.image)
+                      <img src="{{ post.image }}" alt="{{ post.title }}">
+                    @else
+                      <img src="/posts/noImage.png" alt="No Image Available">
+                    @endif
+                  </figure>
+                </div>
+                <div class="card-content is-paddingless has-background-light">
+                  <div class="content">
+                    <br>
+                    <div class="is-size-5">
+                      {{{ post.content }}}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+@endsection

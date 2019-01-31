@@ -1,0 +1,273 @@
+@layout('layouts.app')
+ 
+@section('content')
+
+<section class="is-inred hero is-dark">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title">
+        An Insurgency: Sandstorm Tactical Community
+      </h1>
+      <h2 class="subtitle">
+        Less rushing. More co-op.
+      </h2>
+    </div>
+  </div>
+</section>
+
+<section class="hero is-white">
+  <div class="hero-body">
+    <div class="container">
+
+      <div class="columns">
+        <div class="column is-4">
+          <h5 class="title is-5"><i class="fas fa-server fa-lg"></i>
+            Servers <span class="is-size-7 has-text-grey has-text-weight-normal">(US West)</span>
+          </h5>
+          <div class="has-background-sand card is-shadowless">
+            <div class="card-content is-paddingless">
+
+              <div class="content">
+
+                <div class="has-text-weight-semibold" id="serverStatus1"><div class="serverStatusFill"></div></div>
+                <div class="is-size-5 has-text-weight-semibold">James' San Francisco Co-op</div>
+                  <span class="is-size-6 has-text-weight-semibold" id="serverIp1">45.32.130.114</span>
+                  <span class="tooltip">
+                    <a class="is-size-7 has-text-link is-unselectable has-text-weight-semibold" onclick="copyToClipboard('serverIp1', 0)">
+                      Copy
+                    </a>
+                    <span class="tooltiptext"></span>
+                  </span>
+                  
+                  <div class="is-size-7 has-text-grey">Game Bug: Use empty password when asked</div>
+                  <div id="serverInfo1">
+                    <span class="is-size-6 has-text-weight-semibold" id="loadingServer1Info">
+                      <div class="serverInfoFill">
+                          Loading server info...
+                      </div>
+                    </span>
+                  </div>
+                <hr class="divider-sand">
+
+                <div class="has-text-weight-semibold" id="serverStatus2"><div class="serverStatusFill"></div></div>
+                <div class="is-size-5 has-text-weight-semibold"><i class="fas fa-lock has-text-grey"></i> James' Dallas Co-op</div>
+                  <span class="is-size-6 has-text-weight-semibold" id="serverIp2">207.148.2.100</span>
+                  <span class="tooltip">
+                    <a class="is-size-7 has-text-link is-unselectable has-text-weight-semibold" onclick="copyToClipboard('serverIp2', 1)">
+                      Copy
+                    </a>
+                    <span class="tooltiptext"></span>
+                  </span>
+                  <div class="is-size-7 has-text-grey">Private</div>
+                  <div id="serverInfo2">
+                      <span class="is-size-6 has-text-weight-semibold" id="loadingServer2Info">
+                          <div class="serverInfoFill">
+                              Loading server info...
+                          </div>
+                      </span>
+                  </div>
+                <hr class="divider-sand">
+
+              </div>
+
+            </div>
+          </div>
+        </div>
+        
+        @if(featuredPost)
+          <div class="column is-4">
+            <h5 class="title is-5"><i class="fas fa-star"></i> Featured Post</h5>
+            <div class="tile is-child is-radiusless">
+              <div class="card has-background-warning">
+                <a href="/post/{{ featuredPost.slug }}">
+                  <div class="card-content">
+                    <div class="content">
+                      
+                      <p class="title is-3 has-text-grey has-text-weight-bold fillfPostTop">{{ featuredPost.title }}</p>
+                      <div class="has-text-grey fillfPostBottom">{{{ truncate(featuredPost.content, 150, '...') }}}</div>
+                      
+                    </div>
+                  </div>
+                </a>
+              </div>
+            </div>
+          </div>
+          <hr class="divider-sand">
+        @endif
+
+        <div class="column is-4">
+          <h5 class="title is-5"><i class="fas fa-pen fa-lg"></i> Announcements</h5>
+          @each(pinnedAnnouncement in pinnedAnnouncements)
+            @if(pinnedAnnouncement.pinned === 1)
+              <div class="card">
+                <div class="card-content has-background-grey-lighter">
+                  <div class="content">
+                    {{ pinnedAnnouncement.content }}</p>
+                  </div>
+                </div>
+              </div>
+            @endif
+          
+            @if(pinnedAnnouncement.pinned === 2)
+              <div class="card has-background-light">
+                <div class="card-content">
+                  <div class="content">
+                    {{ pinnedAnnouncement.content }}</p>
+                  </div>
+                </div>
+              </div>
+              <br>
+            @endif
+          @endeach
+          
+          @each(announcement in announcements)
+            @if(announcement.pinned < 1)
+              <div class="has-background-sand card is-shadowless">
+                <div class="card-content is-paddingless">
+                  <span class="content is-size-6 subtitle">
+                    {{ announcement.content }}
+                  </span>
+                  <br>
+                  <span class="subtitle is-size-6 has-text-grey">
+                    <span title="{{ announcement.createdAt.toDateString() }}">
+                      {{ moment(announcement.createdAt).fromNow() }}
+                    </span>
+                  </span>
+                </div>
+              </div>
+              <br>
+            @endif
+          @endeach
+          
+          @if(numAnnouncements > 3)
+            <div class="card is-shadowless">
+              <div class="card-content is-paddingless">
+                <span class="content is-pulled-right">
+                  <h6 class="title is-6">
+                    <a href="/announcements">More</a>
+                  </h6>
+                </span>
+              </div>
+            </div>
+          @endif
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container">
+
+    <div class="columns">
+
+      <div class="column is-8">
+        <h5 class="title is-5">Blog</h5>
+      </div>
+    </div>
+    
+    <div class="columns">
+      <div class="column is-12">
+        <div class="tile is-ancestor">
+          <div class="tile is-parent is-vertical">
+        
+              <div class="columns">
+                @each(post in posts)
+                  <div class="column is-6">
+                    <div class="tile is-child is-radiusless">
+                      <div class="card">
+                        <a href="/post/{{ post.slug }}">
+                          <div class="card-image">
+                            <figure class="image is-16by9">
+                              @if(post.image)
+                                <img src="{{ post.image }}" alt="{{ post.title }}">
+                              @else
+                                <img src="/posts/noImage.png" alt="No Image Available">
+                              @endif
+                            </figure>
+                          </div>
+                        </a>
+                        <div class="card-content">
+                          <div class="content">
+                            <p class="title is-4">
+                              <a href="/post/{{ post.slug }}">
+                                {{ post.title }}
+                              </a>
+                            </p>
+                            <p class="subtitle is-7">
+                              <span title="{{ post.createdAt.toDateString() }}">
+                                {{ moment(post.createdAt).fromNow() }}
+                              </span>
+                            </p>
+                            <div>{{{ truncate(post.content, 150, '...') }}}</div>
+                            <a class="is-pulled-right" href="/post/{{ post.slug }}">Read More</a>
+                            <div class="is-clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                @endeach
+              </div>
+        
+              <div class="columns">
+                @each(post2 in posts2)
+                  <div class="column is-6">
+                    <div class="tile is-child is-radiusless">
+                      <div class="card">
+                        <a href="/post/{{ post2.slug }}">
+                          <div class="card-image">
+                            <figure class="image is-16by9">
+                              <img src="{{ post2.image }}" alt="Placeholder image">
+                            </figure>
+                          </div>
+                        </a>
+                        <div class="card-content">
+                          <div class="content">
+                            <p class="title is-4">
+                              <a href="/post/{{ post.id }}">
+                                {{ post2.title }}
+                              </a>
+                            </p>
+                            <p class="subtitle is-7">
+                              <span title="{{ post2.createdAt.toDateString() }}">
+                                {{ moment(post2.createdAt).fromNow() }}
+                              </span>
+                            </p>
+                            <div>{{{ truncate(post2.content, 150, '...') }}}</div>
+                            <a class="is-pulled-right" href="/post/{{ post2.slug }}">Read More</a>
+                            <div class="is-clearfix"></div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                @endeach
+              </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div> 
+
+    <div class="columns">
+      @if(posts.length < 2)
+        <div class="column is-6">
+      @else
+        <div class="column is-12">
+      @endif
+      
+        <div class="tile is-child box is-radiusless has-text-centered">
+          <h6 class="title is-6"><a href="/blog">Read More Posts</a></h6>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+  
+<script src="/js/getServerInfo.js"></script>
+
+@endsection
