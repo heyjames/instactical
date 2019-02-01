@@ -15,9 +15,17 @@ const Gamedig = require("gamedig");
 
 const app = new express();
 
+// mongoose
+//   .connect(
+//     "mongodb://localhost:27017/node-blog",
+//     { useNewUrlParser: true }
+//   )
+//   .then(() => "You are now connected to Mongo!")
+//   .catch(err => console.error("Something went wrong", err));
+
 mongoose
   .connect(
-    "mongodb://localhost:27017/node-blog",
+    process.env.MONGOLAB_URI,
     { useNewUrlParser: true }
   )
   .then(() => "You are now connected to Mongo!")
@@ -167,6 +175,7 @@ app.use(function(req, res, next) {
   res.type("txt").send("Not found");
 });
 
+const port = process.env.PORT || 3000;
 app.listen(4000, () => {
-  console.log("App listening on port 4000");
+  console.log(`App listening on port ${port}`);
 });
