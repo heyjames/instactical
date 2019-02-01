@@ -27,7 +27,7 @@ let uri =
 
 mongoose
   .connect(
-    process.env.MONGOLAB_URI,
+    uri,
     { useNewUrlParser: true }
   )
   .then(() => "You are now connected to Mongo!")
