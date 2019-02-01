@@ -22,6 +22,8 @@ const app = new express();
 //   )
 //   .then(() => "You are now connected to Mongo!")
 //   .catch(err => console.error("Something went wrong", err));
+let uri =
+  "mongodb://james:apple2iphonexs@ds219055.mlab.com:19055/heroku_bj7x9xf2";
 
 mongoose
   .connect(
