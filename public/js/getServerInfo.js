@@ -161,7 +161,7 @@ function createServerStatus2(bStatus) {
 }
 
 // fetch("http://localhost:4000/api/serverinfo1", { cache: "no-store" })
-fetch("https://instactical.herokuapp.com/api/serverinfo1", {
+fetch("http://instactical.com/api/serverinfo1", {
   cache: "no-store"
 })
   .then(function(response) {
@@ -196,7 +196,7 @@ fetch("https://instactical.herokuapp.com/api/serverinfo1", {
   });
 
 // fetch("http://localhost:4000/api/serverinfo2", { cache: "no-store" })
-fetch("https://instactical.herokuapp.com/api/serverinfo2", {
+fetch("http://instactical.com/api/serverinfo2", {
   cache: "no-store"
 })
   .then(function(response) {
