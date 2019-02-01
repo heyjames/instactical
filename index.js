@@ -82,7 +82,7 @@ app.use(limiter);
 // const auth = require("./middleware/auth");
 // const redirectIfAuthenticated = require("./middleware/redirectIfAuthenticated");
 
-const homePageController = require("./controllers/homePage");
+const homePageController = require("./controllers/homepage");
 const aboutPageController = require("./controllers/aboutPage");
 const guidelinesPageController = require("./controllers/guidelinesPage");
 const blogPageController = require("./controllers/blogPage");
