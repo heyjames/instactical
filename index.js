@@ -178,6 +178,6 @@ app.use(function(req, res, next) {
 });
 
 const port = process.env.PORT || 3000;
-app.listen(4000, () => {
+app.listen(port, () => {
   console.log(`App listening on port ${port}`);
 });
