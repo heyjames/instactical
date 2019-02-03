@@ -26,12 +26,18 @@ let uri =
   "mongodb://james:apple2iphonexs@ds219055.mlab.com:19055/heroku_bj7x9xf2";
 
 mongoose
-  .connect(
-    uri,
-    { useNewUrlParser: true }
-  )
+  .connect(uri, { useNewUrlParser: true })
   .then(() => "You are now connected to Mongo!")
   .catch(err => console.error("Something went wrong", err));
+
+app.all(/.*/, function(req, res, next) {
+  var host = req.header("host");
+  if (host.match(/^www\..*/i)) {
+    next();
+  } else {
+    res.redirect(301, "http://www." + host);
+  }
+});
 
 const mongoStore = connectMongo(expressSession);
 app.use(
