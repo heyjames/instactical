@@ -12,7 +12,7 @@ module.exports = async (req, res, next) => {
 
     const pinnedAnnouncements = await Announcement.find({
       pinned: { $gt: 0 }
-    }).sort({ createdAt: "desc" });
+    });
 
     const announcements = await Announcement.find({
       pinned: { $lt: 1 }
