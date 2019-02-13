@@ -107,17 +107,6 @@
                 </div>
               </div>
             @endif
-          
-            @if(pinnedAnnouncement.pinned === 2)
-              <div class="card has-background-light">
-                <div class="card-content">
-                  <div class="content">
-                    {{  pinnedAnnouncement.content }}
-                  </div>
-                </div>
-              </div>
-              <br>
-            @endif
           @endeach
           
           @each(pinnedAnnouncement in pinnedAnnouncements)
