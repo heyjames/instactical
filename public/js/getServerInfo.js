@@ -42,7 +42,7 @@ function createPlayerCounter(data) {
 
   let spanMaxPlayers = document.createElement("span");
   spanMaxPlayers.classList.add("is-size-5");
-  spanMaxPlayers.textContent = " / 9";
+  spanMaxPlayers.textContent = " / 6";
 
   divPlayerCounter.appendChild(spanNumPlayers);
   divPlayerCounter.appendChild(spanMaxPlayers);
