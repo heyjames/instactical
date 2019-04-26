@@ -148,7 +148,7 @@ app.get("/api/serverinfo1", async (req, res) => {
 app.get("/api/serverinfo2", async (req, res) => {
   await Gamedig.query({
     type: "insurgencysandstorm",
-    host: "207.148.2.100",
+    host: "155.138.240.50",
     port: 27015
   })
     .then(state => {
