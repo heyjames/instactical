@@ -1,0 +1,19 @@
+Navbar
+#917b6d
+___________________
+
+Banner
+#99392a
+___________________
+
+mainInfo section (servers, featured blog, announcements)
+#e9e6df
+___________________
+
+Blog section
+#f5f5f5
+___________________
+
+Footer
+#fafafa
+___________________
