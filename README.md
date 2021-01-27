@@ -1,6 +1,7 @@
 # insTactical v1
 Insurgency: Sandstorm Community Server Website  
-Third major attempt at making a website
+Third major attempt at making a website. Created in about a month in January 2019 to coincide with the major content update noted by the developers to release in February 2019. Insurgency: Sandstorm released on December 12, 2018.
+
 * Back end
   * Node
   * MongoDB
